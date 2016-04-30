@@ -1,16 +1,23 @@
-var http = require('http')
-var finalhandler = require('finalhandler')
-var serveStatic = require('serve-static')
+const http = require('http')
+const fs = require('fs')
+const finalhandler = require('finalhandler')
+const serveStatic = require('serve-static')
 const discovery = require('discovery')
+const browserify = require('browserify')
 
 const serviceName = 'service-frontend'
  
 // Serve up public folder 
-var serve = serveStatic('public')
+const serve = serveStatic('public')
+
+browserify('./src/index.jsx')
+  .transform('babelify', {presets: ['es2015', 'react']})
+  .bundle()
+  .pipe(fs.createWriteStream('public/bundle.js'))
  
 // Create server 
-var server = http.createServer(function(req, res){
-  var done = finalhandler(req, res)
+const server = http.createServer((req, res) => {
+  let done = finalhandler(req, res)
   serve(req, res, done)
 })
  
