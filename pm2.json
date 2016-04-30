@@ -1,0 +1,38 @@
+{
+  "apps" : [{
+    "script"      : "service-scraper/index.js",
+    "watch"       : true,
+    "ignore_watch": ["node_modules"],
+    "name": "service-scraper",
+    "cwd": "service-scraper",
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "env_production" : {
+       "NODE_ENV": "production"
+    }
+  },{
+    "script"      : "service-api/index.js",
+    "watch"       : true,
+    "ignore_watch": ["node_modules"],
+    "name": "service-api",    
+    "cwd": "service-api",    
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "env_production" : {
+       "NODE_ENV": "production"
+    }
+  },{"script"      : "service-frontend/index.js",
+    "watch"       : true,
+    "ignore_watch": ["node_modules", "public"],
+    "name": "service-frontend",
+    "cwd": "service-frontend",
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "env_production" : {
+       "NODE_ENV": "production"
+    }
+  }]
+}

@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node index.js",
-    "dev": "npm run build:dev & node index.js",
-    "build": "browserify src/index.jsx --outfile public/bundle.js",
-    "build:dev": "watchify src/index.jsx --outfile public/bundle.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

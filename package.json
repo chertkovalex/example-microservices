@@ -4,8 +4,16 @@
   "description": "Microservice simple example",
   "main": "index.js",
   "scripts": {
+    "start": "npm run stop && pm2 start pm2.json && pm2-web",
+    "stop": "pm2 kill",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gal Noy",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+  },
+  "dependencies": {
+    "pm2": "^1.1.3",
+    "pm2-web": "^2.1.3"
+  }
 }
