@@ -1,4 +1,3 @@
-
 var http = require('http')
 var finalhandler = require('finalhandler')
 var serveStatic = require('serve-static')
