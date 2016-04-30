@@ -1,6 +1,5 @@
 'use strict'
 const restify = require('restify')
-const sjs = require('scraperjs')
 const gplay = require('google-play-scraper')
 const discovery = require('discovery')
 
@@ -11,15 +10,15 @@ server.use(restify.queryParser())
 
 const scraps = new Map()
 
-server.get('/scraper', (req, res, next) => {
+server.get('/', (req, res, next) => {
 	// params validation
 	if (!req.params.query) return next(new restify.errors.BadRequestError('No "query" param'))
 	// serving from memory cache
-	if (scraps.has(req.params.query)) res.json(scraps.get(req.params.query))
+	if (scraps.has(req.params.query)) return res.json(scraps.get(req.params.query))
 	// scraping
 	gplay.search({
-    term: req.params.query
-  }).then((results) => {
+		term: req.params.query
+	}).then((results) => {
 		scraps.set(req.params.query, results)
 		if (!res.finished) res.json(results)
 	});
