@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js",
     "start": "npm run build && node index.js",
+    "dev": "npm run build:dev & node index.js",
     "build": "browserify src/index.jsx --outfile public/bundle.js",
+    "build:dev": "watchify src/index.jsx --outfile public/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -18,11 +19,13 @@
     "client-api": "../client-api",
     "discovery": "../discovery",
     "finalhandler": "^0.4.1",
-    "material-ui": "^0.14.4",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-tap-event-plugin": "^1.0.0",
     "serve-static": "^1.10.2"
+  },
+  "devDependencies": {
+    "watchify": "^3.7.0"
   },
   "browserify": {
     "transform": [
