@@ -18,7 +18,15 @@ server.get('/', (req, res, next) => {
 	// scraping
 	gplay.search({
 		term: req.params.query
-	}).then((results) => {
+	}).then((raw) => {
+		let results = raw.map((item) => { 
+			return {
+				iconUrl: item.icon,
+				title: item.title,
+				description: item.developer,
+				footer: `Score - ${item.score}, ${item.free ? 'Free' : `${item.price}$`}`
+			}
+		})
 		scraps.set(req.params.query, results)
 		if (!res.finished) res.json(results)
 	});
