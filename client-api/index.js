@@ -1,16 +1,16 @@
 require('isomorphic-fetch')
 const qs = require('qs')
 
-const config = {
+const initialConfig = {
     endpoint: '/api/'
 }
 
 class API {
-    constructor(config = config) {
+    constructor(config = initialConfig) {
         this.config = config
     }
     search(params) {
-        return fetch(`${config.endpoint}search?${qs.stringify(params)}`)
+        return fetch(`${this.config.endpoint}search?${qs.stringify(params)}`)
     }
 }
 
